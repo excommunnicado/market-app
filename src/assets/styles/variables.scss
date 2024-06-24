@@ -1,0 +1,50 @@
+$red-color: #e31530;
+$white-color: #fafaff;
+$black-color: #010101;
+$dark-grey-color: #676767;
+$green-color: #06d6a0;
+$light-green-color: #adbcbf;
+$light-grey-color: #ececec;
+
+$in-stock-available: #d7d7d9;
+$in-stock-unavailable: #4d4c4c;
+
+@mixin wrapper {
+  width: 1200px;
+  margin: 0 auto;
+  padding: 0px 20px;
+}
+
+@mixin full-width-container {
+  max-width: 100%;
+  padding: 50px 0;
+}
+
+@mixin linkStyle($color, $hoverColor) {
+  position: relative;
+  display: inline-block;
+  color: $color;
+  transition: color 0.3s ease;
+
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: -2px;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background-color: $black-color; // Assuming $black-color is predefined
+    transition: width 0.3s ease, transform 0.3s ease, background-color 0.3s ease;
+    transform: translateX(-50%);
+  }
+
+  &:hover {
+    color: $hoverColor;
+
+    &::after {
+      width: 100%;
+      background-color: $hoverColor;
+      transform: translateX(-50%);
+    }
+  }
+}
